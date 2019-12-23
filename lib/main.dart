@@ -10,8 +10,27 @@ class MyFirstApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('My First App'),
         ),
-        body: Text(
-            'Ad cillum veniam mollit excepteur labore excepteur ullamco consectetur voluptate occaecat labore culpa. Eu et enim aliquip in nisi nulla duis ex voluptate laboris est ex sint dolore. Consequat nulla enim qui aliqua cillum officia cillum aute ea consectetur. Qui elit do incididunt officia magna. In laborum esse veniam mollit et.'),
+        body: Column(
+          children: [
+            Text('The Question! '),
+            Row(
+              children: [
+                RaisedButton(
+                  child: Text('Answer 1'),
+                  onPressed: null,
+                ),
+                RaisedButton(
+                  child: Text('Answer 2'),
+                  onPressed: null,
+                ),
+                RaisedButton(
+                  child: Text('Answer 3'),
+                  onPressed: null,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
