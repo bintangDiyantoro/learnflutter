@@ -5,16 +5,16 @@ void main() => runApp(MyFirstApp());
 class MyFirstApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyFirstAppState();
+    return _MyFirstAppState();
   }
 }
 
-class MyFirstAppState extends State<MyFirstApp> {
-  void answerQuestion() {
+class _MyFirstAppState extends State<MyFirstApp> {
+  void _answerQuestion() {
     setState(() {
-      questionIndex = questionIndex + 1;
+      _questionIndex = _questionIndex + 1;
     });
-    print(questionIndex);
+    print(_questionIndex);
   }
 
   var questions1 = {
@@ -28,7 +28,8 @@ class MyFirstAppState extends State<MyFirstApp> {
   ];
 
   var questionKey = 'color';
-  var questionIndex = 0;
+  var _questionIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,14 +40,14 @@ class MyFirstAppState extends State<MyFirstApp> {
         body: Column(
           children: [
             Text(''),
-            Text(this.questions2[questionIndex]),
+            Text(this.questions2[_questionIndex]),
             Text(''),
             Row(
               children: [
                 Text(' '),
                 RaisedButton(
                   child: Text('Answer 1'),
-                  onPressed: answerQuestion,
+                  onPressed: _answerQuestion,
                 ),
                 Text(' '),
                 RaisedButton(
