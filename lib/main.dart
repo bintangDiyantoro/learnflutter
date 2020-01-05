@@ -40,37 +40,37 @@ class _MyFirstAppState extends State<MyFirstApp> {
         ),
         body: Column(
           children: [
-            Text(''),
+            // Text(''),
             Question(this.questions2[_questionIndex]),
-            Text(''),
-            Row(
-              children: [
-                Text(' '),
+            // Text(''),
+            // Row(
+            //   children: [
+                // Text(' '),
                 RaisedButton(
                   child: Text('Answer 1'),
                   onPressed: _answerQuestion,
                 ),
-                Text(' '),
+                // Text(' '),
                 RaisedButton(
                   child: Text('Answer 2'),
                   onPressed: () => print('Answer 2 chosen'),
                 ),
-                Text(' '),
+                // Text(' '),
                 RaisedButton(
                   child: Text('Answer 3'),
                   onPressed: () {
                     print('Answer 3 chosen');
                   },
                 ),
-                Text(' '),
+                // Text(' '),
                 RaisedButton(
                   child: Text('Answer 4'),
                   onPressed: () {
                     print('Answer 4 chosen');
                   },
                 ),
-              ],
-            ),
+            //   ],
+            // ),
           ],
         ),
       ),
