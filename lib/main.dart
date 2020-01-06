@@ -14,7 +14,7 @@ class MyFirstApp extends StatefulWidget {
 class _MyFirstAppState extends State<MyFirstApp> {
   var _questionIndex = 0;
 
-  var questions = [
+  static const questions = [
     {
       'questionText': 'What\'s your favorite color?',
       'answers': ['Red', 'Green', 'Blue']
@@ -31,14 +31,14 @@ class _MyFirstAppState extends State<MyFirstApp> {
   
   void _answerQuestion() {
     setState(() {
-      if (_questionIndex <= 1) {
+      if (_questionIndex < _MyFirstAppState.questions.length-1) {
         _questionIndex = _questionIndex + 1;
       } else {
         _questionIndex = 0;
       }
     });
     print(_questionIndex);
-    for (var a in questions[_questionIndex]['answers']) {
+    for (var a in _MyFirstAppState.questions[_questionIndex]['answers']) {
       print(a);
     }
   }
@@ -53,7 +53,7 @@ class _MyFirstAppState extends State<MyFirstApp> {
         ),
         body: Column(
           children: [
-            Question(this.questions[_questionIndex]['questionText']),
+            Question(_MyFirstAppState.questions[_questionIndex]['questionText']),
             // Row(
             //   children: [
                 ...(questions[_questionIndex]['answers'] as List<String>)
