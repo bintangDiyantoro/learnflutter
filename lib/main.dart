@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './question.dart';
-import 'package:cobaflutter/answer.dart';
+import './quiz.dart';
+import './result.dart';
 
 void main() => runApp(MyFirstApp());
 
@@ -14,7 +14,7 @@ class MyFirstApp extends StatefulWidget {
 class _MyFirstAppState extends State<MyFirstApp> {
   var _questionIndex = 0;
 
-  static const questions = [
+  static const _questions = [
     {
       'questionText': 'What\'s your favorite color?',
       'answers': ['Red', 'Green', 'Blue']
@@ -28,17 +28,13 @@ class _MyFirstAppState extends State<MyFirstApp> {
       'answers': ['Max', 'Kim', 'John']
     }
   ];
-  
+
   void _answerQuestion() {
     setState(() {
-      if (_questionIndex < _MyFirstAppState.questions.length-1) {
-        _questionIndex = _questionIndex + 1;
-      } else {
-        _questionIndex = 0;
-      }
+      _questionIndex = _questionIndex + 1;
     });
     print(_questionIndex);
-    for (var a in _MyFirstAppState.questions[_questionIndex]['answers']) {
+    for (var a in _MyFirstAppState._questions[_questionIndex]['answers']) {
       print(a);
     }
   }
@@ -47,24 +43,16 @@ class _MyFirstAppState extends State<MyFirstApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.deepPurple,
-          title: Text('My First App'),
-        ),
-        body: Column(
-          children: [
-            Question(_MyFirstAppState.questions[_questionIndex]['questionText']),
-            // Row(
-            //   children: [
-                ...(questions[_questionIndex]['answers'] as List<String>)
-                    .map((answer) {
-                  return Answer(_answerQuestion, answer);
-                }).toList(),
-            //   ],
-            // ),
-          ],
-        ),
-      ),
+          appBar: AppBar(
+            backgroundColor: Colors.deepPurple,
+            title: Text('My First App'),
+          ),
+          body: _questionIndex < _MyFirstAppState._questions.length
+              ? Quiz(
+                  questions: _questions,
+                  answerQuestion: this._answerQuestion,
+                  questionIndex: _questionIndex)
+              : Result()),
     );
   }
 }
